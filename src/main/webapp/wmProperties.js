@@ -1,5 +1,5 @@
 var _WM_APP_PROPERTIES = {
-  "activeTheme" : "material",
+  "activeTheme" : "autumn",
   "dateFormat" : "",
   "defaultLanguage" : "en",
   "displayName" : "RepoTest",
