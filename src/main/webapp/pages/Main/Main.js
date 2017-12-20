@@ -16,7 +16,14 @@ Application.$controller("MainPageController", ["$scope", function ($scope) {
 
 }]);
 
-Application.$controller("googleapisTable1Controller", ["$scope",
+Application.$controller("ZipsTable1Controller", ["$scope",
+	function($scope) {
+		"use strict";
+		$scope.ctrlScope = $scope;
+	}
+]);
+
+Application.$controller("ZipsLiveForm1Controller", ["$scope",
 	function($scope) {
 		"use strict";
 		$scope.ctrlScope = $scope;

@@ -13,6 +13,13 @@
             </resource>
             <resource>
                 <filtering>true</filtering>
+                <directory>services/Cities/src</directory>
+                <excludes>
+                    <exclude>**/*.java</exclude>
+                </excludes>
+            </resource>
+            <resource>
+                <filtering>true</filtering>
                 <directory>services/googleapis/src</directory>
                 <excludes>
                     <exclude>**/*.java</exclude>
@@ -103,6 +110,7 @@
                         </goals>
                         <configuration>
                             <sources>
+                                <source>services/Cities/src</source>
                                 <source>services/googleapis/src</source>
                                 <source>services/securityService/src</source>
                             </sources>
@@ -277,6 +285,11 @@
             <artifactId>hsqldb</artifactId>
             <version>2.3.3</version>
         </dependency>
+        <dependency>
+            <groupId>mysql</groupId>
+            <artifactId>mysql-connector-java</artifactId>
+            <version>5.1.38</version>
+        </dependency>
     </dependencies>
     <dependencyManagement>
         <dependencies>
@@ -307,6 +320,8 @@
         <profile.props.file>development.properties</profile.props.file>
         <spring.version>4.3.9.RELEASE</spring.version>
         <spring.security.version>4.1.2.RELEASE</spring.security.version>
-        <wavemaker.studio.version>9.0.2</wavemaker.studio.version>
+        <wavemaker.studio.version>9.1.0</wavemaker.studio.version>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <project.lib.directory>${basedir}/lib</project.lib.directory>
     </properties>
 </project>

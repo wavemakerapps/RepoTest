@@ -4,18 +4,43 @@
     <wm-content name="content">
         <wm-left-panel columnwidth="2" name="leftpanel" content="leftnav"></wm-left-panel>
         <wm-page-content padding="unset 15px" columnwidth="8" name="mainContent">
-            <wm-table navigation="Basic" dataset="bind:Variables.GoogleapisInvoke.dataSet" title="" name="googleapisTable1">
-                <wm-table-column binding="status" caption="Status" pcdisplay="true" mobiledisplay="true" type="string"></wm-table-column>
-                <wm-table-column binding="route.summary" caption="Route Summary" pcdisplay="true" mobiledisplay="true" type="string"></wm-table-column>
-                <wm-table-column binding="route.copyrights" caption="Route Copyrights" pcdisplay="true" mobiledisplay="true" type="string"></wm-table-column>
-                <wm-table-column binding="route.bounds.southwest.lng" caption="Route.bounds.southwest Lng" pcdisplay="true" mobiledisplay="true" type="string"></wm-table-column>
-                <wm-table-column binding="route.bounds.southwest.lat" caption="Route.bounds.southwest Lat" pcdisplay="true" mobiledisplay="true" type="string"></wm-table-column>
-                <wm-table-column binding="route.bounds.northeast.lng" caption="Route.bounds.northeast Lng" pcdisplay="true" mobiledisplay="true" type="string"></wm-table-column>
-                <wm-table-column binding="route.bounds.northeast.lat" caption="Route.bounds.northeast Lat" pcdisplay="true" mobiledisplay="true" type="string"></wm-table-column>
-                <wm-table-column binding="route.overview_polyline.points" caption="Route.overview_polyline Points" pcdisplay="true" mobiledisplay="true" type="string"></wm-table-column>
-                <wm-table-column binding="route.leg.start_address" caption="Route.leg Start Address" pcdisplay="true" mobiledisplay="true" type="string"></wm-table-column>
-                <wm-table-column binding="route.leg.end_address" caption="Route.leg End Address" pcdisplay="true" mobiledisplay="true" type="string"></wm-table-column>
-            </wm-table>
+            <wm-livetable name="ZipsLiveTable1" formlayout="dialog">
+                <wm-table navigation="Basic" dataset="bind:Variables.CitiesZipsData.dataSet" title="Zips List" name="ZipsTable1" gridfirstrowselect="true" editmode="dialog">
+                    <wm-table-column binding="city" caption="City" generator="assigned" pcdisplay="true" mobiledisplay="true" type="string" primary-key="true"></wm-table-column>
+                    <wm-table-column binding="lat" caption="Lat" generator="assigned" pcdisplay="true" mobiledisplay="true" type="double" primary-key="true"></wm-table-column>
+                    <wm-table-column binding="lng" caption="Lng" generator="assigned" pcdisplay="true" mobiledisplay="true" type="double" primary-key="true"></wm-table-column>
+                    <wm-table-column binding="state" caption="State" generator="assigned" pcdisplay="true" mobiledisplay="true" type="string" primary-key="true"></wm-table-column>
+                    <wm-table-column binding="zip" caption="Zip" generator="assigned" pcdisplay="true" mobiledisplay="true" type="integer" primary-key="true"></wm-table-column>
+                    <wm-table-action shortcutkey="" position="footer" action="addNewRow()" class="btn-primary" show="true" iconclass="wi wi-plus" display-name="New" key="addNewRow"></wm-table-action>
+                    <wm-table-row-action action="editRow()" class="btn-transparent" show="true" iconclass="wi wi-pencil" title="Edit" display-name="" key="updaterow"></wm-table-row-action>
+                    <wm-table-row-action action="deleteRow()" class="btn-transparent" show="true" iconclass="wi wi-trash" title="Delete" display-name="" key="deleterow"></wm-table-row-action>
+                </wm-table>
+                <wm-liveform captionposition="top" captionalign="left" dataset="bind:Variables.CitiesZipsData.dataSet" name="ZipsLiveForm1" errormessage="" title="Zips Info" formlayout="dialog" iconclass="wi wi-edit">
+                    <wm-layoutgrid name="layoutgrid1" columns="3">
+                        <wm-gridrow name="gridrow1">
+                            <wm-gridcolumn name="gridcolumn1" columnwidth="4">
+                                <wm-form-field name="city" displayname="City" required="true" show="true" generator="assigned" primary-key="true" key="city" type="string" is-related="false" maxchars="16" pc-display="true" mobile-display="true" widget="text"></wm-form-field>
+                            </wm-gridcolumn>
+                            <wm-gridcolumn name="gridcolumn2" columnwidth="4">
+                                <wm-form-field name="lat" displayname="Lat" required="true" show="true" generator="assigned" primary-key="true" key="lat" type="double" is-related="false" step="0.0001" pc-display="true" mobile-display="true" widget="number"></wm-form-field>
+                            </wm-gridcolumn>
+                            <wm-gridcolumn name="gridcolumn3" columnwidth="4">
+                                <wm-form-field name="lng" displayname="Lng" required="true" show="true" generator="assigned" primary-key="true" key="lng" type="double" is-related="false" step="0.0001" pc-display="true" mobile-display="true" widget="number"></wm-form-field>
+                            </wm-gridcolumn>
+                        </wm-gridrow>
+                        <wm-gridrow name="gridrow2">
+                            <wm-gridcolumn name="gridcolumn4" columnwidth="4">
+                                <wm-form-field name="state" displayname="State" required="true" show="true" generator="assigned" primary-key="true" key="state" type="string" is-related="false" maxchars="2" pc-display="true" mobile-display="true" widget="text"></wm-form-field>
+                            </wm-gridcolumn>
+                            <wm-gridcolumn name="gridcolumn5" columnwidth="4">
+                                <wm-form-field name="zip" displayname="Zip" required="true" show="true" generator="assigned" primary-key="true" key="zip" type="integer" is-related="false" step="0" pc-display="true" mobile-display="true" widget="number"></wm-form-field>
+                            </wm-gridcolumn>
+                        </wm-gridrow>
+                    </wm-layoutgrid>
+                    <wm-form-action key="cancel" class="form-cancel btn-secondary" iconclass="wi wi-cancel" action="cancel()" display-name="Cancel" show="true" type="button" update-mode="true"></wm-form-action>
+                    <wm-form-action key="save" class="form-save btn-success" iconclass="wi wi-save" display-name="Save" show="true" type="submit" update-mode="true"></wm-form-action>
+                </wm-liveform>
+            </wm-livetable>
         </wm-page-content>
         <wm-right-panel columnwidth="2" name="rightpanel" content="rightnav"></wm-right-panel>
     </wm-content>
